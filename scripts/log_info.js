@@ -1,4 +1,4 @@
 
 obj = document.getElementById("btn");
 
-obj.onclick = fun(){console.log("test");}
+obj.onclick = function(){console.log("test");}

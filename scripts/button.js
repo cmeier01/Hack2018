@@ -1,3 +1,4 @@
+const distance = 10;
 var KEY = "47E95D014FC94726A766DE678392A416";
 var coords;
 //type is exactly either "restaurants" or "attractions"
@@ -20,35 +21,26 @@ function getLocation() {
         navigator.geolocation.getCurrentPosition(recordPosition);
     } else {
         console.log("Geolocation is not supported by this browser.");
-<<<<<<< HEAD
 	      coords = {latitude: 90,
                   longitude: 0};
 	  }
-=======
-	 coords = {latitude: 90,
-                   longitude: 0}; //placeholder value
-	}
-    }
->>>>>>> faf918950644b88fab1c8a9586569c1a434d229e
 }
 
 function recordPosition(position) {
     coords = {latitude: position.coords.latitude,
               longitude: position.coords.longitude};
+
+    var listLocsUP = getLocations(distance, "restaurants", coords.latitude, coords.longitude);
+
+    parseLocations(listLocsUP);
 }
 
-<<<<<<< HEAD
 getLocation();
+
+
+
 
 //var str = getLocations(10, "restaurants", "42.418560", "-71.106450");
 /*listLocsUP is a string*/
-var listLocsUP = getLocations(10, "restaurants", coords.latitude, coords.longitude);
-console.log(listLocsUP);
-=======
-//test data
-//var str = getLocations(10, "restaurants", "42.418560", "-71.106450");
 
-//getLocation();
-//var str = getLocations(10, "restaurants", coords.latitude , coords.longitude);
-console.log(str);
->>>>>>> faf918950644b88fab1c8a9586569c1a434d229e
+//test data
