@@ -14,5 +14,5 @@ function getLocations(distance, type, lat, lng)
 }
 
 
-var str = getLocations(10, "restaurants", "42.418560", "-71.106450");
+//var str = getLocations(10, "restaurants", "42.418560", "-71.106450");
 console.log(str);
