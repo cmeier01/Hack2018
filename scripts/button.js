@@ -1,5 +1,3 @@
-
-
 var KEY = "47E95D014FC94726A766DE678392A416";
 var coords;
 //type is exactly either "restaurants" or "attractions"
