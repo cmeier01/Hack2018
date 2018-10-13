@@ -110,12 +110,12 @@ function initMap() {
 	line_two.setMap(map);
 
 	//all of the following code was added in part 2 related to the user location
-	
+ 	
 	if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
 	    var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-		   
+		  
 	var contentString = "";
 		 
 	var close_station_coord;
