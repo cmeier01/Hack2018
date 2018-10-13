@@ -1,6 +1,6 @@
 
 
-var KEY = "47E95D014FC94726A766DE678392A41";
+var KEY = "47E95D014FC94726A766DE678392A416";
 //type is exactly either "resturants" or "attractions"
 //distance in miles user is willing to travel
 //lat and lng are latitude and longitude values of the user
