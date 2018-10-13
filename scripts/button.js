@@ -10,7 +10,9 @@ function getLocations(distance, type, lat, lng)
 	var xmlHttp = new XMLHttpRequest();
 	//distance unused in this version
 	xmlHttp.open( "GET","http://api.tripadvisor.com/api/partner/2.0/map/" + lat + "," + lng + "/" + type + "?key=" + KEY, false );
-	xmlHttp.send();
+	
+        //xmlHttp.open( "GET","http://api.tripadvisor.com/api/partner/2.0/map/" + lat + "," + lng + "/" + type + "?key=" + KEY + "?distance=" + distance, false );
+        xmlHttp.send();
 	return xmlHttp.responseText;
 }
 
@@ -20,9 +22,16 @@ function getLocation() {
         navigator.geolocation.getCurrentPosition(recordPosition);
     } else {
         console.log("Geolocation is not supported by this browser.");
+<<<<<<< HEAD
 	      coords = {latitude: 90,
                   longitude: 0};
 	  }
+=======
+	 coords = {latitude: 90,
+                   longitude: 0}; //placeholder value
+	}
+    }
+>>>>>>> faf918950644b88fab1c8a9586569c1a434d229e
 }
 
 function recordPosition(position) {
@@ -30,9 +39,18 @@ function recordPosition(position) {
               longitude: position.coords.longitude};
 }
 
+<<<<<<< HEAD
 getLocation();
 
 //var str = getLocations(10, "restaurants", "42.418560", "-71.106450");
 /*listLocsUP is a string*/
 var listLocsUP = getLocations(10, "restaurants", coords.latitude, coords.longitude);
 console.log(listLocsUP);
+=======
+//test data
+//var str = getLocations(10, "restaurants", "42.418560", "-71.106450");
+
+//getLocation();
+//var str = getLocations(10, "restaurants", coords.latitude , coords.longitude);
+console.log(str);
+>>>>>>> faf918950644b88fab1c8a9586569c1a434d229e
