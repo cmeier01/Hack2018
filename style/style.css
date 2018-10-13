@@ -29,7 +29,7 @@ body {
 #btn {
   border: 1px solid #ffffff;
   background: #589442;
-  color: white;
+  color: #ffffff;
   font: 15px Courier New, sans-serif;
   padding: 5px;
   cursor: pointer;
@@ -39,7 +39,7 @@ body {
 }
 
 .slider select:focus {
-    outline: none;  
+  outline: none;  
 }
 
 .slider select option {
@@ -47,22 +47,22 @@ body {
 }
 
 .slider {
- border:1px solid #ffffff;
-    width: 300px;
-    border-radius: 3px;
-    overflow: hidden;
+  border:1px solid #ffffff;
+  width: 300px;
+  border-radius: 3px;
+  overflow: hidden;
   float:left;
 
 }
 
 .slider select { 
   font: 20px Courier New, sans-serif;
-color:#ffffff;
-    padding: 5px 8px 0px 5px;
-    width: 130%;
-    border: none;
-    box-shadow: none;
-    background: transparent;
-    background-image: none;
-    -webkit-appearance: none;
+  color:#ffffff;
+  padding: 5px 8px 0px 5px;
+  width: 130%;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  background-image: none;
+  -webkit-appearance: none;
 }
