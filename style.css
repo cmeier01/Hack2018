@@ -1,0 +1,16 @@
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333; 
+  margin: 0;
+  padding: 0;
+}
+
+.banner {
+	background-color: #589442;
+	height: 150px;
+	width: 100%;
+}
+
+.banner img {
+	margin-left: 15px;
+}
