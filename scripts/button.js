@@ -14,20 +14,25 @@ function getLocations(distance, type, lat, lng)
 	return xmlHttp.responseText;
 }
 
+/*Gets the user's location using navigator*/
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(recordPosition);
     } else {
         console.log("Geolocation is not supported by this browser.");
-	 coords = {latitude: 90,
-                   longitude: 0};
-	}
-    }
+	      coords = {latitude: 90,
+                  longitude: 0};
+	  }
 }
+
 function recordPosition(position) {
     coords = {latitude: position.coords.latitude,
               longitude: position.coords.longitude};
 }
 
+getLocation();
+
 //var str = getLocations(10, "restaurants", "42.418560", "-71.106450");
-console.log(str);
+/*listLocsUP is a string*/
+var listLocsUP = getLocations(10, "restaurants", coords.latitude, coords.longitude);
+console.log(listLocsUP);

@@ -1,3 +1,45 @@
+
+
+var KEY = "47E95D014FC94726A766DE678392A416";
+var coords;
+//type is exactly either "restaurants" or "attractions"
+//distance in miles user is willing to travel
+//lat and lng are latitude and longitude values of the user
+function getLocations(distance, type, lat, lng)
+{
+	var xmlHttp = new XMLHttpRequest();
+	//distance unused in this version
+	xmlHttp.open( "GET","http://api.tripadvisor.com/api/partner/2.0/map/" + lat + "," + lng + "/" + type + "?key=" + KEY, false );
+	xmlHttp.send();
+	return xmlHttp.responseText;
+}
+
+/*Gets the user's location using navigator*/
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(recordPosition);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+	      coords = {latitude: 90,
+                  longitude: 0};
+	  }
+}
+
+function recordPosition(position) {
+    coords = {latitude: position.coords.latitude,
+              longitude: position.coords.longitude};
+}
+
+getLocation();
+
+//var str = getLocations(10, "restaurants", "42.418560", "-71.106450");
+/*listLocsUP is a string*/
+var listLocsUP = getLocations(10, "restaurants", coords.latitude, coords.longitude);
+console.log(listLocsUP);
+
+
+
+
 /*
  - parameters:
  	- for user: 
@@ -74,24 +116,24 @@ let day = 0; //Enumerated ?
 const timeBuffer = 60; //in minutes
 
 
-function User(long, lat)
+function User(lat, long)
 {
-	this.longitude = long;
 	this.latitude = lat;
+	this.longitude = long;
 	//this.time = //calculate from 60*hours + minutes
 	//availTime,
 	//attracts,
 	//visiedLocs = [],
 }
-function Location(id, long, lat, rat, nR, a)
+function Location(id, lat, long, rat, nR, a)
 {
 	this.id = id;
-	this.longitude = long;
 	this.latitude = lat;
+	this.longitude = long;
 	this.rating = rat;
 	this.numReviews = nR;
 	this.attract = a;
-	this.distance = function(uLong, uLat) 
+	this.distance = function(uLat, uLong) 
 	{
 		return Math.pow(Math.pow(uLong-this.longitude, 2) + Math.pow(uLat - this.lat), 0.5);
 	}
@@ -124,16 +166,16 @@ function removeDuplicates(listLocs)
 
 /*Test Initializations*/
 
-var list = JSON.parse(/*API object*/); //list passed in
+var list = JSON.parse(listLocsUP); //list passed in
 
-var user = User(0,0);
+var user = User(coords.latitude, coords.longitude);
 var listLocs = [];		//final sorted list of parsed locations
 
 /*This is where you parse from the 10 locations passed to you*/
 for (int i = 0; i < numLocs; i ++) {
 	var id = list[i].location_id;
-	var long = list[i].longitude;
 	var lat = list[i].latitude;
+	var long = list[i].longitude;
 	var rat = list[i].rating;
 	var nR = list[i].num_reviews;
 	var a = list[i].attraction_types["name"];
@@ -145,7 +187,7 @@ for (int i = 0; i < numLocs; i ++) {
 
 	//Remove visited: Parse through the user list and if id's match, break;
 
-	var loc = Location(long, lat, rat, nR, a);
+	var loc = Location(lat, long, rat, nR, a);
 
 	listLocs[i] = loc;
 }
@@ -155,3 +197,6 @@ listLocs.sort(compLocs); //Sorts based on compLocs, v nice, ehyyyy
 
 /*Giving user options for what to do: 
 	- Technically they parse the info, give it to user, but we might write the code for that anyways*/
+
+
+console.log(listLocs);	
