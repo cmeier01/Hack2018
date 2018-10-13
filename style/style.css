@@ -25,3 +25,44 @@ body {
 .ad-right{
   float: center;
 }
+
+#btn {
+  border: 1px solid #ffffff;
+  background: #589442;
+  color: white;
+  font: 15px Courier New, sans-serif;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  margin-left:15px;
+}
+
+.slider select:focus {
+    outline: none;  
+}
+
+.slider select option {
+  padding:3px;
+}
+
+.slider {
+ border:1px solid #ffffff;
+    width: 300px;
+    border-radius: 3px;
+    overflow: hidden;
+  float:left;
+
+}
+
+.slider select { 
+  font: 20px Courier New, sans-serif;
+color:#ffffff;
+    padding: 5px 8px 0px 5px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
