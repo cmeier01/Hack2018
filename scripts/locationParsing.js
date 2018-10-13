@@ -76,13 +76,16 @@ Parameters being passed in from button.js:
 	- const distance is distance from user
 */
 
+const DEFAULT_TIME = 360; //minutes
+
 var listLocs = [];		//final sorted list of parsed locations
 var list = []; 			//will become final sorted list of unparsed locations
+var user;
 function parseLocations(listLocsUP)
 {
 	list = JSON.parse(listLocsUP); //list passed in
 
-	var user = new User(coords.latitude, coords.longitude);
+	user = new User(coords.latitude, coords.longitude, DEFAULT_TIME);
 	
 
 	/*This is where you parse from the (10?) locations passed to you*/
@@ -120,7 +123,7 @@ function parseLocations(listLocsUP)
 	}
 	removeDuplicates(listLocs);
 	
-	listLocs.sort(compLocs); //Sorts based on compLocs, v nice, ehyyyy, low -> high
+	listLocs.sort(compLocs); //Sorts based on compLocs, v nice, ehyyyy, high -> low
 	list.data.sort(compLocs);	//Now they're both in same sorted order
 
 //Not too great at sorting....????
@@ -131,6 +134,8 @@ function parseLocations(listLocsUP)
 /*Giving user options for what to do: 
 	- Technically they parse the info, give it to user, but we might write the code for that anyways*/
 
+
+	generatePath();
 }
 
 
@@ -139,7 +144,7 @@ let day = 0; //Enumerated ?
 const timeBuffer = 60; //in minutes
 
 
-function User(lat, long)
+function User(lat, long, tt)
 {
 	var currTime = new Date();
 	this.time = 60 * currTime.getHours() + currTime.getMinutes();
@@ -147,7 +152,7 @@ function User(lat, long)
 	this.latitude = lat;
 	this.longitude = long;
 	
-	//availTime,
+	this.availTime = tt;
 	//attracts,
 	//visiedLocs = [],
 }
@@ -171,13 +176,13 @@ function str8Dist(uLat, uLong, lLat, lLong)
 
 /*Compares two locations based first on rating then on number of reviews. 
 	If tied for both, first come first serve.*/
-/*Also sorts low to high.*/
+/*Also sorts high to low.*/
 function compLocs(loc1, loc2)
 {
 	if (loc1.rating != loc2.rating) {
-		return loc1.rating > loc2.rating;
+		return loc1.rating < loc2.rating;
 	} else {
-		return loc1.num_reviews > loc2.num_reviews;
+		return loc1.num_reviews < loc2.num_reviews;
 	}
 }
 
